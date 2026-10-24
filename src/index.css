@@ -1,0 +1,60 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --brand-dark: #122b15;
+    --brand-forest: #1c451d;
+    --brand-excel: #217346;
+    --brand-excel-hover: #1e6b41;
+    --brand-accent: #22c55e;
+    --brand-light-bg: #f8faf8;
+    --brand-subtle: #f0fdf4;
+    --brand-border: #e2e8f0;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  body {
+    background-color: var(--brand-light-bg);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* Excel Spreadsheet Grid background patterns */
+.bg-excel-grid {
+  background-size: 24px 24px;
+  background-image: 
+    linear-gradient(to right, rgba(33, 115, 70, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(33, 115, 70, 0.06) 1px, transparent 1px);
+}
+
+.bg-excel-grid-dark {
+  background-size: 28px 28px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}

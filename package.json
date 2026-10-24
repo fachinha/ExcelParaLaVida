@@ -1,0 +1,33 @@
+{
+  "name": "excelparalavida",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "d1:migrate:local": "wrangler d1 migrations apply excel-para-la-vida-db --local",
+    "d1:migrate:remote": "wrangler d1 migrations apply excel-para-la-vida-db --remote",
+    "d1:seed:local": "node scripts/seed_admin_users.js --local",
+    "d1:seed:remote": "node scripts/seed_admin_users.js --remote",
+    "pages:dev": "wrangler pages dev dist --d1 DB=excel-para-la-vida-db"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "lucide-react": "^1.61.0",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "oxlint": "^1.88.0",
+    "typescript": "~6.0.3",
+    "vite": "^8.3.4"
+  }
+}
