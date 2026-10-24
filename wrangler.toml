@@ -8,5 +8,5 @@ binding = "DB"
 database_name = "excel-para-la-vida-db"
 # NOTA: Reemplazar database_id por el ID generado en Cloudflare Dashboard o mediante:
 # npx wrangler d1 create excel-para-la-vida-db
-database_id = "00000000-0000-0000-0000-000000000000"
+database_id = "b6ac0722-f1b3-4c82-b724-884e96fb7da2"
 migrations_dir = "migrations"
