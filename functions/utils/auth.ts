@@ -35,7 +35,8 @@ export async function deriveHash(password: string, saltHex: string): Promise<str
     false,
     ["deriveBits"]
   );
-  const salt = hexToBytes(saltHex);
+  // Usa la codificación UTF-8 del saltHex para coincidencia exacta con pbkdf2Sync
+  const salt = enc.encode(saltHex);
   const derivedBits = await crypto.subtle.deriveBits(
     {
       name: "PBKDF2",
@@ -51,17 +52,48 @@ export async function deriveHash(password: string, saltHex: string): Promise<str
 
 /**
  * Verifica si una contraseña coincide con el hash y salt almacenados.
+ * Es compatible tanto con salt codificado en UTF-8 como en bytes binarios hex.
  */
 export async function verifyPassword(password: string, storedHash: string, storedSalt: string): Promise<boolean> {
   try {
-    const computedHash = await deriveHash(password, storedSalt);
-    // Comparación segura en tiempo constante para mitigar timing attacks
-    if (computedHash.length !== storedHash.length) return false;
-    let match = 0;
-    for (let i = 0; i < computedHash.length; i++) {
-      match |= computedHash.charCodeAt(i) ^ storedHash.charCodeAt(i);
-    }
-    return match === 0;
+    const enc = new TextEncoder();
+    const keyMaterial = await crypto.subtle.importKey(
+      "raw",
+      enc.encode(password),
+      { name: "PBKDF2" },
+      false,
+      ["deriveBits"]
+    );
+
+    // Intento 1: salt como cadena UTF-8 (compatibilidad exacta con crypto.pbkdf2Sync de Node)
+    const bits1 = await crypto.subtle.deriveBits(
+      {
+        name: "PBKDF2",
+        salt: enc.encode(storedSalt),
+        iterations: 100000,
+        hash: "SHA-256"
+      },
+      keyMaterial,
+      256
+    );
+    const hash1 = bytesToHex(new Uint8Array(bits1));
+    if (hash1 === storedHash) return true;
+
+    // Intento 2: salt como bytes binarios hexadecimales
+    const bits2 = await crypto.subtle.deriveBits(
+      {
+        name: "PBKDF2",
+        salt: hexToBytes(storedSalt),
+        iterations: 100000,
+        hash: "SHA-256"
+      },
+      keyMaterial,
+      256
+    );
+    const hash2 = bytesToHex(new Uint8Array(bits2));
+    if (hash2 === storedHash) return true;
+
+    return false;
   } catch {
     return false;
   }
