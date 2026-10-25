@@ -57,10 +57,6 @@ export const Header: React.FC<HeaderProps> = ({ onOpenEnrollment }) => {
               <span className="font-extrabold text-base sm:text-lg tracking-tight text-[#163A1A] leading-none group-hover:text-[#217346] transition-colors">
                 EXCEL PARA LA VIDA
               </span>
-              <span className="text-[11px] sm:text-xs font-semibold text-emerald-800/80 tracking-wide mt-1 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#22C55E]"></span>
-                UNRN · Bariloche
-              </span>
             </div>
           </a>
 

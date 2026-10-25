@@ -158,7 +158,7 @@ export const EnrollmentModal: React.FC<EnrollmentModalProps> = ({
                   Inscripción a Talleres
                 </h3>
                 <span className="text-[11px] text-emerald-200">
-                  Excel Para La Vida · UNRN Bariloche
+                  Excel Para La Vida
                 </span>
               </div>
             </div>

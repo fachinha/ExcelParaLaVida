@@ -1,7 +1,7 @@
 import React from "react";
 import { siteConfig, getWhatsAppLink } from "../../data/siteConfig";
 import { SpreadsheetDemo } from "./SpreadsheetDemo";
-import { MessageCircle, ArrowDown, MapPin, Sparkles, CheckCircle } from "lucide-react";
+import { MessageCircle, ArrowDown, CheckCircle } from "lucide-react";
 
 interface HeroProps {
   onOpenEnrollment?: () => void;
@@ -24,14 +24,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnrollment }) => {
           {/* Columna Izquierda: Copywriting y Llamados a la Acción */}
           <div className="lg:col-span-7 flex flex-col text-left space-y-6">
             
-            {/* Badge Institucional Bariloche / UNRN */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-100/80 border border-emerald-300/60 text-[#163A1A] text-xs font-semibold w-fit shadow-xs">
-              <MapPin className="w-3.5 h-3.5 text-[#217346]" />
-              <span>{siteConfig.location}</span>
-              <span className="w-1 h-1 rounded-full bg-emerald-600"></span>
-              <span className="text-emerald-800 font-bold">Talleres Prácticos</span>
-            </div>
-
             {/* Titular Principal */}
             <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.12]">
               Aprendé <span className="text-[#1C451D] underline decoration-[#22C55E] decoration-4 underline-offset-4">Excel</span> para la facultad, el trabajo y la vida.
@@ -80,12 +72,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenEnrollment }) => {
                 <ArrowDown className="w-4 h-4 text-slate-500" />
               </a>
             </div>
-
-            {/* Nota de cercanía */}
-            <p className="text-xs text-slate-500 flex items-center gap-1.5 pt-1">
-              <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-              <span>Respuesta rápida y personalizada por WhatsApp e Instagram.</span>
-            </p>
 
           </div>
 
